@@ -1,11 +1,11 @@
-<header class="header">
-    <nav class="navbar navbar-expand-lg fixed-top py-3">
-        <div class="container"><a class="navbar-brand text-uppercase font-weight-bold"><i class="fas fa-graduation-cap"></i> &nbsp; University of Hyderabad</a>
+<header class="header header-dark">
+    <nav class="navbar navbar-expand-lg fixed-top py-3 navbar-dark">
+        <div class="container"><a class="navbar-brand"><i class="fas fa-graduation-cap"></i> &nbsp; University of Hyderabad</a>
             <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"><i class="fa fa-bars"></i></button>
 
             <div id="navbarSupportedContent" class="collapse navbar-collapse" *ngIf='!showLogin'>
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active"><a class="nav-link text-uppercase font-weight-bold" [routerLink]="['/']">Home <span class="sr-only">(current)</span></a></li>
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link text-uppercase font-weight-bold" [routerLink]="['/']">Home <span class="sr-only">(current)</span></a></li>
                     <li class="nav-item"><a class="nav-link text-uppercase font-weight-bold" [routerLink]="['/librarybooks']">Library</a></li>
                     <li class="nav-item"><a class="nav-link text-uppercase font-weight-bold" [routerLink]="['/hostalManage']">Hostal</a></li>
                     <li class="nav-item"><a class="nav-link text-uppercase font-weight-bold" [routerLink]="['/tutorials']">Online Videos</a></li>
@@ -16,7 +16,7 @@
     </nav>
 </header>
 
-<body style="margin-top: 50px;">
+<body style="margin-top: 120px;">
     <div *ngIf='!showLogin'>
         <router-outlet></router-outlet>
     </div>

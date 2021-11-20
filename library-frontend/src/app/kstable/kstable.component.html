@@ -76,7 +76,7 @@
     <div class="col-sm-6">
         <select type="text" [(ngModel)]="itemsPerPage">
       <option *ngFor="let item of itemsPerPageList" [ngValue]="item">{{item}}</option>
-    </select>records per page
+    </select> <span style="padding-left:7px">records per page</span>
 
     </div>
     <div *ngIf="filteredData && showPagination" class="pull-right">
