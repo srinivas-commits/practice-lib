@@ -17,6 +17,8 @@ import { IssueHostalComponent } from './issue-hostal/issue-hostal.component';
 import { LoginComponent } from './login/login.component';
 import { HttpAuthInterceptor } from './http-auth.interceptor';
 import { RegisterComponent } from './register/register.component';
+import { AddBookComponent } from './add-book/add-book.component';
+import { AddHostalComponent } from './add-hostal/add-hostal.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { RegisterComponent } from './register/register.component';
     IssueHostalComponent,
     LoginComponent,
     RegisterComponent,
+    AddBookComponent,
+    AddHostalComponent,
   ],
   imports: [
     BrowserModule,

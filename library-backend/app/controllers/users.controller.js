@@ -170,7 +170,7 @@ exports.verifyJwtToken = function verifyJwtToken(req, access) {
     if (authHeader) {
         const token = authHeader.split(' ')[1];
         return jwt.verify(token, TOKEN_SECRET, (err, user) => {
-            if (err) return res.sendStatus(401);
+            if (err) return false;
             if (access != '') {
                 if (user.role === access) {
                     return true;
@@ -182,6 +182,6 @@ exports.verifyJwtToken = function verifyJwtToken(req, access) {
             }
         });
     } else {
-        res.sendStatus(401);
+        return false;
     }
 }

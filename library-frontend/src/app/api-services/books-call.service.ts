@@ -18,4 +18,9 @@ export class BooksCallService {
     url = url.concat(data.id);
     return this.http.put(url, data);
   }
+
+  addBook(data: any) {
+    let url = this.apiUrl;
+    return this.http.post(url, data);
+  }
 }

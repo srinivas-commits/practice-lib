@@ -65,4 +65,7 @@ export class HostalsComponent implements OnInit {
     });
   }
 
+  addHostalRoom() {
+    this.router.navigateByUrl('/addHostal');
+  }
 }

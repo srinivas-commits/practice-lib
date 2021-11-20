@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddBookComponent } from './add-book/add-book.component';
+import { AddHostalComponent } from './add-hostal/add-hostal.component';
 import { HomeComponent } from './home/home.component';
 import { HostalsComponent } from './hostals/hostals.component';
 import { IssueBookComponent } from './issue-book/issue-book.component';
@@ -10,6 +12,8 @@ import { RegisterComponent } from './register/register.component';
 import { TutorialsComponent } from './tutorials/tutorials.component';
 
 const routes: Routes = [
+  { path: 'addHostal', component: AddHostalComponent },
+  { path: 'addBook', component: AddBookComponent },
   { path: 'issueHostal', component: IssueHostalComponent },
   { path: 'issuebooks', component: IssueBookComponent },
   { path: 'librarybooks', component: LibraryBooksListComponent },

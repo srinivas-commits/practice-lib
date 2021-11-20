@@ -1,5 +1,6 @@
 <div class="container">
     <h1 class="text-center"> Books List</h1>
+    <button class="btn btn-success" (click)="addNewBook()"> Add Book</button>
 </div>
 <div class="container">
     <app-kstable [columns]="columns" [rows]="rows" (editDataChange)="editedData($event)" (deleteDataChange)="deleteData($event)" [showActions]="true" [showPagination]="true" [showDelete]="true" [showView]="false">

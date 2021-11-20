@@ -21,8 +21,7 @@ export class RegisterComponent implements OnInit {
     this.authService.register(this.userData).subscribe((data: any) => {
       sessionStorage.setItem('authToken', data.token);
       console.log(data);
-      base.authService.sendLoginEvent();
-      base.router.navigateByUrl('/');
+      this.authService.sendRegisterEvent();
     });
   }
 

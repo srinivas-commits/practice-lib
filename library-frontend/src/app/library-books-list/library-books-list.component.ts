@@ -50,4 +50,8 @@ export class LibraryBooksListComponent implements OnInit {
     });
   }
 
+  addNewBook() {
+    this.router.navigateByUrl('/addBook');
+  }
+
 }
