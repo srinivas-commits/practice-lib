@@ -1,0 +1,23 @@
+<div class="container">
+    <form>
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username" name="username" placeholder="username" [(ngModel)]="userData.username">
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" class="form-control" id="email" name="email" placeholder="email" [(ngModel)]="userData.email">
+        </div>
+        <div class="form-group">
+            <label for="useraccess">Role</label>
+            <input type="text" class="form-control" id="useraccess" name="useraccess" placeholder="useraccess" [(ngModel)]="userData.useraccess">
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Password" [(ngModel)]="userData.password">
+        </div>
+        <button type="submit" class="btn btn-primary" (click)="register()">Register</button> &nbsp;
+        <br>
+        <p> Already has an account </p> <button type="submit" class="btn btn-primary" (click)="changeToLogin()">Log In</button>
+    </form>
+</div>

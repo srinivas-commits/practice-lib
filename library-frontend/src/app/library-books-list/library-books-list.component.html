@@ -1,0 +1,7 @@
+<div class="container">
+    <h1 class="text-center"> Books List</h1>
+</div>
+<div class="container">
+    <app-kstable [columns]="columns" [rows]="rows" (editDataChange)="editedData($event)" (deleteDataChange)="deleteData($event)" [showActions]="true" [showPagination]="true" [showDelete]="true" [showView]="false">
+    </app-kstable>
+</div>
