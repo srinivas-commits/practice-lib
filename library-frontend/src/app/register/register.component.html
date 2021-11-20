@@ -1,23 +1,24 @@
 <div class="container">
-    <form>
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" class="form-control" id="username" name="username" placeholder="username" [(ngModel)]="userData.username">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <form class="box">
+                    <h1>Register</h1>
+                    <br>
+                    <p class="text-muted"> Please enter the following details</p>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="User Name"
+                        [(ngModel)]="userData.username">
+                    <input type="text" class="form-control" id="email" name="email" placeholder="User Email"
+                        [(ngModel)]="userData.email">
+                    <input type="text" class="form-control" id="useraccess" name="useraccess" placeholder="Access"
+                        [(ngModel)]="userData.useraccess">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password"
+                        [(ngModel)]="userData.password">
+                    <input type="submit" value="Register" (click)="register()">
+                    <p class="text-muted"> Already has an account </p>
+                    <input type="submit" value="LogIn" (click)="changeToLogin()">
+                </form>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input type="text" class="form-control" id="email" name="email" placeholder="email" [(ngModel)]="userData.email">
-        </div>
-        <div class="form-group">
-            <label for="useraccess">Role</label>
-            <input type="text" class="form-control" id="useraccess" name="useraccess" placeholder="useraccess" [(ngModel)]="userData.useraccess">
-        </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" name="password" placeholder="Password" [(ngModel)]="userData.password">
-        </div>
-        <button type="submit" class="btn btn-primary" (click)="register()">Register</button> &nbsp;
-        <br>
-        <p> Already has an account </p> <button type="submit" class="btn btn-primary" (click)="changeToLogin()">Log In</button>
-    </form>
+    </div>
 </div>

@@ -1,18 +1,26 @@
 <div class="container" *ngIf="!showReg">
-    <form>
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" class="form-control" id="username" name="username" placeholder="username" [(ngModel)]="userData.username">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <form class="box">
+                    <h1>Login</h1>
+                    <p class="text-muted"> Please enter your login and password!</p>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="username" name="username" placeholder="username" [(ngModel)]="userData.username">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Password" [(ngModel)]="userData.password">
+                    </div>
+                    <input type="submit" name="" value="Login" (click)="login()">
+                    <br>
+                    <p class="text-muted"> Don't have an account </p> 
+                    <input type="submit" name="" value="Register" (click)="changeToRegister()">
+                </form>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" name="password" placeholder="Password" [(ngModel)]="userData.password">
-        </div>
-        <button type="submit" class="btn btn-primary" (click)="login()">Log In</button> &nbsp;
-        <br>
-        <p> Don't have an account </p> <button type="submit" class="btn btn-primary" (click)="changeToRegister()">Register</button>
-    </form>
+    </div>
 </div>
+
 <div *ngIf="showReg">
     <app-register></app-register>
 </div>
