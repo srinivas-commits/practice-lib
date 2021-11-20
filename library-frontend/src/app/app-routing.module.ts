@@ -10,7 +10,6 @@ import { RegisterComponent } from './register/register.component';
 import { TutorialsComponent } from './tutorials/tutorials.component';
 
 const routes: Routes = [
-  { path: 'register', component: RegisterComponent },
   { path: 'issueHostal', component: IssueHostalComponent },
   { path: 'issuebooks', component: IssueBookComponent },
   { path: 'librarybooks', component: LibraryBooksListComponent },

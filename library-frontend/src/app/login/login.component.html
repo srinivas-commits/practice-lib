@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="!showReg">
     <form>
         <div class="form-group">
             <label for="username">Username</label>
@@ -12,4 +12,7 @@
         <br>
         <p> Don't have an account </p> <button type="submit" class="btn btn-primary" (click)="changeToRegister()">Register</button>
     </form>
+</div>
+<div *ngIf="showReg">
+    <app-register></app-register>
 </div>

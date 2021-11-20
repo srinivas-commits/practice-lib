@@ -27,7 +27,7 @@ export class RegisterComponent implements OnInit {
   }
 
   changeToLogin() {
-    this.authService.sendLoginEvent();
-  }
+   this.authService.sendRegisterEvent();
+  } 
 
 }

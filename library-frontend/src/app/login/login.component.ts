@@ -10,8 +10,16 @@ import { AuthService } from '../api-services/auth.service';
 export class LoginComponent implements OnInit {
 
   public userData:any;
+  public showReg: boolean = false;
+
   constructor(private router: Router, private authService: AuthService) { 
     this.userData = {};
+    var base = this;
+    this.authService.registerSubject.subscribe((data: any) => {
+      if(data.register) {
+        base.showReg = false;
+      }
+    });
   }
 
   ngOnInit(): void {
@@ -27,6 +35,6 @@ export class LoginComponent implements OnInit {
     });
   }
   changeToRegister() {
-    this.router.navigateByUrl('register');
+    this.showReg = true;
   }
 }

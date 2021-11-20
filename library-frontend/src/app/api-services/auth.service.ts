@@ -8,6 +8,7 @@ import { Subject } from 'rxjs';
 export class AuthService {
   public apiUrl = 'http://localhost:8080/api/users/';
   public loginSubject = new Subject<any>();
+  public registerSubject = new Subject<any>();
   constructor(private http: HttpClient) { }
 
   login(data: any) {
@@ -24,4 +25,7 @@ export class AuthService {
     this.loginSubject.next({login: true});
   }
 
+  sendRegisterEvent() {
+    this.registerSubject.next({register: true});
+  }
 }
