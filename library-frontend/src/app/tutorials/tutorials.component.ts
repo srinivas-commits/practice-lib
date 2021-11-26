@@ -10,6 +10,9 @@ import { TutorialCallService } from '../api-services/tutorial-call.service';
 export class TutorialsComponent implements OnInit {
 
   public videos: any = [];
+  public searchvideos: any = [];
+  public resultofsearch: any = [];
+  public searchcourse: any;
   constructor(private videoService: TutorialCallService) { }
 
   ngOnInit(): void {
@@ -20,8 +23,18 @@ export class TutorialsComponent implements OnInit {
     var base = this;
     this.videoService.getVideos().subscribe((data:any) => {
       base.videos = data;
+      base.searchvideos = data;
     }, error => {
       alert('user doesnt have access');
+    });
+  }
+
+  getBooksOnSearch() {
+    this.searchvideos.array.forEach(item => {
+      if (item['course'].toString().toLowerCase().indexOf(this.searchcourse.toLowerCase()) !== -1) {
+        this.resultofsearch.push(item);
+        console.log(this.resultofsearch);
+      }
     });
   }
 }
