@@ -187,6 +187,10 @@ input[type="text"] {
     color: white;
 }
 
+label {
+    color: rgba(255, 255, 255, 0.863) !important;
+}
+
 th {
     color: rgba(255, 255, 255, 0.863) !important;
 }
@@ -197,4 +201,21 @@ h1 {
 
 span {
     color: rgba(255, 255, 255, 0.863);
+}
+
+.header {
+    color:rgba(255, 255, 255, 0.863);
+    font-weight: 600;
+    padding-bottom: 20px;
+}
+
+.addButton {
+    float:right;
+    margin-bottom: 8px;
+}
+
+.imgclass {
+    height: 200px;
+    width:200px;
+    margin-top: 40px;
 }
