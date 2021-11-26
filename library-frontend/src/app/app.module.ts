@@ -19,6 +19,8 @@ import { HttpAuthInterceptor } from './http-auth.interceptor';
 import { RegisterComponent } from './register/register.component';
 import { AddBookComponent } from './add-book/add-book.component';
 import { AddHostalComponent } from './add-hostal/add-hostal.component';
+import { VideosanitizePipe } from './videosanitize.pipe';
+import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 
 @NgModule({
   declarations: [
@@ -34,13 +36,15 @@ import { AddHostalComponent } from './add-hostal/add-hostal.component';
     RegisterComponent,
     AddBookComponent,
     AddHostalComponent,
+    VideosanitizePipe,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     NgxPaginationModule,
-    FormsModule
+    FormsModule,
+    NgxYoutubePlayerModule.forRoot()
   ],
   providers: [
     {

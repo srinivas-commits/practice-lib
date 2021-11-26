@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+import { TutorialCallService } from '../api-services/tutorial-call.service';
 
 @Component({
   selector: 'app-tutorials',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TutorialsComponent implements OnInit {
 
-  constructor() { }
+  public videos: any = [];
+  constructor(private videoService: TutorialCallService) { }
 
   ngOnInit(): void {
+   this.getBooksFromServices();
   }
 
+  getBooksFromServices() {
+    var base = this;
+    this.videoService.getVideos().subscribe((data:any) => {
+      base.videos = data;
+    }, error => {
+      alert('user doesnt have access');
+    });
+  }
 }

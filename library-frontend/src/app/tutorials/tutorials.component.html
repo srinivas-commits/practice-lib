@@ -1,1 +1,20 @@
-<p>tutorials works!</p>
+<div class="container">
+    <div class="row">
+        <h4>Video Tutorials</h4>
+    </div>
+    <div class="row">
+        <label for="searchbar">Search</label>
+        <input type="text" id="searchbar" name="searchbar"> &nbsp;
+        <button id="searchbtn" name="searchbtn"> search </button>
+    </div>
+    <div class="row">
+        <div class="card" *ngFor="let video of videos">
+            <youtube-player [videoId]="video.link">
+            </youtube-player>
+            <div class="card-body">
+                <h5 class="card-title">{{video.course}}</h5>
+                <p class="card-text">{{video.description}}</p>
+            </div>
+        </div>
+    </div>
+</div>

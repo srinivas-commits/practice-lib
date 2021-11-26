@@ -6,14 +6,15 @@
                     <h1>Register</h1>
                     <br>
                     <p class="text-muted"> Please enter the following details</p>
-                    <input type="text" class="form-control" id="username" name="username" placeholder="User Name"
-                        [(ngModel)]="userData.username">
-                    <input type="text" class="form-control" id="email" name="email" placeholder="User Email"
-                        [(ngModel)]="userData.email">
-                    <input type="text" class="form-control" id="useraccess" name="useraccess" placeholder="Access"
-                        [(ngModel)]="userData.useraccess">
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Password"
-                        [(ngModel)]="userData.password">
+                    <input type="text" class="form-control" id="username" name="username" placeholder="User Name" [(ngModel)]="userData.username">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="User Email" [(ngModel)]="userData.email">
+                    <input type="text" class="form-control" id="course" name="course" placeholder="Course" [(ngModel)]="userData.usercourse">
+                    <!-- <input type="text" class="form-control" id="useraccess" name="useraccess" placeholder="Access" [(ngModel)]="userData.useraccess"> -->
+                    <select class="text-muted" id="useraccess" name="useraccess" type="number" [(ngModel)]="selectedLevel">
+                        <option [ngValue]="null" [disabled]="true" [hidden]="true" >User role</option>
+                        <option *ngFor="let level of access" [ngValue]="level">{{level.name}}</option>
+                    </select>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" [(ngModel)]="userData.password">
                     <input type="submit" value="Register" (click)="register()">
                     <p class="text-muted"> Already has an account </p>
                     <input type="submit" value="LogIn" (click)="changeToLogin()">

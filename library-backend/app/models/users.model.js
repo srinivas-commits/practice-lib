@@ -4,7 +4,8 @@ module.exports = mongoose => {
         username: {
             type: String,
             min: [4, 'Too short, min 4 characters are required'],
-            max: [32, 'Too long, max 16 characters are required']
+            max: [32, 'Too long, max 16 characters are required'],
+            unique: true
         },
         email: {
             type: String,
@@ -13,9 +14,13 @@ module.exports = mongoose => {
             lowercase: true,
             unique: true,
             required: 'Email is required',
-            match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/]
+            match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/],
+            unique: true
         },
         useraccess: {
+            type: String,
+        },
+        usercourse: {
             type: String,
         },
         password: {
