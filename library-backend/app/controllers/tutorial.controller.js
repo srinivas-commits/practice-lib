@@ -1,48 +1,60 @@
 const db = require("../models");
+const { verifyJwtToken } = require("./users.controller");
 const Tutorial = db.tutorial;
 
 // Create and Save a new Tutorial
 exports.create = (req, res) => {
+    var access = verifyJwtToken(req, 'admin');
+
     // Validate request
-    if (!req.body.course) {
-        res.status(400).send({ message: "Content can not be empty!" });
-        return;
-    }
+    if (access) {
+        if (!req.body.course) {
+            res.status(400).send({ message: "Content can not be empty!" });
+            return;
+        }
 
-    // Create a Tutorial
-    const tutorial = new Tutorial({
-        course: req.body.course,
-        branch: req.body.branch,
-        link: req.body.link,
-    });
-
-    // Save Tutorial in the database
-    tutorial
-        .save(tutorial)
-        .then(data => {
-            res.send(data);
-        })
-        .catch(err => {
-            res.status(500).send({
-                message: err.message || "Some error occurred while creating the Tutorial."
-            });
+        // Create a Tutorial
+        const tutorial = new Tutorial({
+            course: req.body.course,
+            branch: req.body.branch,
+            link: req.body.link,
         });
+
+        // Save Tutorial in the database
+        tutorial
+            .save(tutorial)
+            .then(data => {
+                res.send(data);
+            })
+            .catch(err => {
+                res.status(500).send({
+                    message: err.message || "Some error occurred while creating the Tutorial."
+                });
+            });
+    } else {
+        res.status(403).send('unauthorized');
+    }
 };
 
 // Retrieve all Tutorials from the database.
 exports.findAll = (req, res) => {
-    const course = req.query.course;
-    var condition = course ? { course: { $regex: new RegExp(course), $options: "i" } } : {};
-    debugger;
-    Tutorial.find(condition)
-        .then(data => {
-            res.send(data);
-        })
-        .catch(err => {
-            res.status(500).send({
-                message: err.message || "Some error occurred while retrieving tutorials."
+    var access = verifyJwtToken(req, '');
+    if (access) {
+        const course = req.query.course;
+        var condition = course ? { course: { $regex: new RegExp(course), $options: "i" } } : {};
+        debugger;
+        Tutorial.find(condition)
+            .then(data => {
+                res.send(data);
+            })
+            .catch(err => {
+                res.status(500).send({
+                    message: err.message || "Some error occurred while retrieving tutorials."
+                });
             });
-        });
+    } else {
+        res.status(403).send('unauthorized');
+    }
 };
 
 // Find a single Tutorial with an id

@@ -1,17 +1,18 @@
 <div class="container">
     <div class="header row justify-content-center">
         <h2>Video Tutorials</h2>
+        <button class="addButton btn btn-success" (click)="addNewVideo()"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
     </div>
     <div class="container h-100" style="padding-bottom: 40px;">
         <div class="d-flex h-100" style="justify-content: right;">
             <div class="searchbar">
-                <input class="search_input" type="text" name="search" id="search"  [(ngModel)]="searchcourse" placeholder="Search..." (keyup)="getBooksOnSearch()">
-                <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
+                <input class="search_input" type="text" name="search" id="search" [(ngModel)]="searchcourse" placeholder="Search..." (keyup)="getBooksOnSearch()">
+                <a class="search_icon"><i class="fas fa-search"></i></a>
             </div>
         </div>
     </div>
     <div class="container">
-        <div class="card" style="border: 1px solid rgba(0,0,0,.125)!important;" *ngFor="let video of videos">
+        <div class="card" style="border: 1px solid rgba(0,0,0,.125)!important;" *ngFor="let video of resultofsearch">
             <youtube-player [videoId]="video.link">
             </youtube-player>
             <div class="card-body">

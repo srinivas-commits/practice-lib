@@ -14,5 +14,10 @@ export class TutorialCallService {
     let url = this.apiUrl;
     return this.http.get(url);
   }
+
+  addVideo(data: any) {
+    let url = this.apiUrl;
+    return this.http.post(url, data);
+  }
   
 }

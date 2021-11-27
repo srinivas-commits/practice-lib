@@ -21,6 +21,7 @@ import { AddBookComponent } from './add-book/add-book.component';
 import { AddHostalComponent } from './add-hostal/add-hostal.component';
 import { VideosanitizePipe } from './videosanitize.pipe';
 import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
+import { AddVideoComponent } from './add-video/add-video.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
     AddBookComponent,
     AddHostalComponent,
     VideosanitizePipe,
+    AddVideoComponent,
   ],
   imports: [
     BrowserModule,
