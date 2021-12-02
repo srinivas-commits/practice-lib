@@ -16,10 +16,10 @@ export class TutorialsComponent implements OnInit {
   constructor(private videoService: TutorialCallService, private router: Router) { }
 
   ngOnInit(): void {
-   this.getBooksFromServices();
+   this.getVideosFromServices();
   }
 
-  getBooksFromServices() {
+  getVideosFromServices() {
     var base = this;
     this.videoService.getVideos().subscribe((data:any) => {
       base.videos = data;
@@ -29,7 +29,7 @@ export class TutorialsComponent implements OnInit {
     });
   }
 
-  getBooksOnSearch() {
+  getVideosOnSearch() {
     this.resultofsearch = [];
     this.videos.forEach(item => {
       if (item['course'].toString().toLowerCase().indexOf(this.searchcourse.toLowerCase()) !== -1) {

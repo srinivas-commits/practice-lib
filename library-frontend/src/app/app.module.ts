@@ -44,6 +44,7 @@ import { AddVideoComponent } from './add-video/add-video.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    RouterModule,
     NgxPaginationModule,
     FormsModule,
     NgxYoutubePlayerModule.forRoot()
