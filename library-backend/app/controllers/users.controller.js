@@ -47,6 +47,22 @@ exports.findAll = (req, res) => {
         });
 };
 
+exports.profile = (req, res) => {
+    const user = req.body.username;
+    // var condition = username ? { username: { $regex: new RegExp(username), $options: "i" } } : {};
+
+    Users.findOne({ username: user })
+        .then(data => {
+            console.log("user data: \n" + data);
+            res.send(data);
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: err.message || "Some error occurred while retrieving tutorials."
+            });
+        });
+}
+
 // Find a single Tutorial with an id
 exports.findOne = (req, res) => {
     const id = req.params.id;
@@ -144,6 +160,8 @@ exports.authorize = (req, res) => {
                 const token = generateAccessToken({ username: req.body.username, role: data.useraccess });
                 var result = {
                     'token': token,
+                    'username': data.username,
+                    'userRole': data.useraccess,
                     'isauthorized': true
                 };
                 res.json(result);

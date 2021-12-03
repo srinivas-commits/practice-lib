@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { UserAccessService } from '../user-access.service';
 
 @Component({
   selector: 'app-hkstable',
@@ -17,6 +18,7 @@ export class HkstableComponent implements OnInit, OnChanges {
   @Input() isScroll = false;
   @Input() showSelection = false;
   public currentPage: any;
+  public showRole: boolean = false;
   public dropdownSettings = {
     singleSelection: false,
     idField: '',
@@ -41,12 +43,24 @@ export class HkstableComponent implements OnInit, OnChanges {
   direction: any;
   filteredData: any;
 
-  constructor() { }
+  constructor(private userRole: UserAccessService) { 
+    this.userAccessConfig();
+  }
 
   ngOnInit() {
+    this.userAccessConfig();
     if (!this.showPagination) {
       this.itemsPerPage = this.rows.length;
     }
+  }
+
+  userAccessConfig() {
+    var access = sessionStorage.getItem('role').toString();
+    if(access === 'admin') {
+      this.showRole = true;
+    } else if (access === 'student') {
+      this.showRole = false;
+    } 
   }
 
   ngOnChanges() {
@@ -63,7 +77,7 @@ export class HkstableComponent implements OnInit, OnChanges {
   }
 
   filterData(columnName: any, searchValue: any, columns: any) {
-
+    debugger;
     let isMulti = false;
     columns.forEach((item: any) => {
       if (columnName === item.name) {
@@ -72,8 +86,10 @@ export class HkstableComponent implements OnInit, OnChanges {
       if (item.columnSearchValue !== undefined && item.columnSearchValue !== '' && !isMulti) {
         this.iterateArray(this.rows, item.name, item.columnSearchValue);
         isMulti = true;
-      } else if (isMulti) {
-        this.iterateArray(this.filteredData, item.name, item.columnSearchValue);
+      }  else if (isMulti ) {
+        if (item.columnSearchValue !== undefined && item.columnSearchValue !== '') {
+          this.iterateArray(this.filteredData, item.name, item.columnSearchValue);
+        }
       }
     });
     if (!isMulti) {
@@ -91,8 +107,10 @@ export class HkstableComponent implements OnInit, OnChanges {
   }
 
   iterateArray(iterateList: any, columnName: any, searchValue: any) {
+    debugger;
     this.filteredData = [];
     iterateList.forEach((item: any) => {
+      debugger;
       if (item[columnName].toString().toLowerCase().indexOf(searchValue.toLowerCase()) !== -1) {
         this.filteredData.push(item);
       }

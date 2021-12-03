@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
+import { UserAccessService } from '../user-access.service';
 
 @Component({
   selector: 'app-kstable',
@@ -16,6 +17,7 @@ export class KstableComponent implements OnInit, OnChanges {
   @Input() isScroll = false;
   @Input() showSelection = false;
 public currentPage:any ;
+public showRole: boolean = false;
 public dropdownSettings = {
   singleSelection: false,
   idField: '',
@@ -39,12 +41,24 @@ column:any;
 direction:any;
 filteredData:any;
 
-constructor() { }
+constructor(private userRole: UserAccessService) {
+  this.userAccessConfig();
+}
 
 ngOnInit() {
+  this.userAccessConfig();
   if (!this.showPagination) {
     this.itemsPerPage = this.rows.length;
   }
+}
+
+userAccessConfig() {
+  var access = sessionStorage.getItem('role').toString();
+  if(access === 'admin') {
+    this.showRole = true;
+  } else if (access === 'student') {
+    this.showRole = false;
+  } 
 }
 
 ngOnChanges() {
@@ -71,7 +85,9 @@ filterData(columnName: any, searchValue: any, columns: any) {
       this.iterateArray(this.rows, item.name, item.columnSearchValue);
       isMulti = true;
     } else if (isMulti) {
-      this.iterateArray(this.filteredData, item.name, item.columnSearchValue);
+      if (item.columnSearchValue !== undefined && item.columnSearchValue !== '') {
+        this.iterateArray(this.filteredData, item.name, item.columnSearchValue);
+      }
     }
   });
   if (!isMulti) {

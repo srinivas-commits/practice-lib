@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { TutorialCallService } from '../api-services/tutorial-call.service';
+import { UserAccessService } from '../user-access.service';
 
 @Component({
   selector: 'app-tutorials',
@@ -13,10 +14,23 @@ export class TutorialsComponent implements OnInit {
   public videos: any = [];
   public resultofsearch: any = [];
   public searchcourse: any;
-  constructor(private videoService: TutorialCallService, private router: Router) { }
+  public showRole: boolean = false;
+  constructor(private videoService: TutorialCallService, private router: Router, private userRole: UserAccessService) {
+    this.userAccessConfig();
+  }
 
   ngOnInit(): void {
+    this.userAccessConfig();
    this.getVideosFromServices();
+  }
+
+  userAccessConfig() {
+    var access = sessionStorage.getItem('role').toString();
+    if(access === 'admin') {
+      this.showRole = true;
+    } else if (access === 'student') {
+      this.showRole = false;
+    } 
   }
 
   getVideosFromServices() {

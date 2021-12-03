@@ -9,6 +9,7 @@ export class AuthService {
   public apiUrl = 'http://localhost:8080/api/users/';
   public loginSubject = new Subject<any>();
   public registerSubject = new Subject<any>();
+  public userSubject = new Subject<any>();
   constructor(private http: HttpClient) { }
 
   login(data: any) {
@@ -18,6 +19,11 @@ export class AuthService {
 
   register(data: any) {
     let url = this.apiUrl;
+    return this.http.post(url, data);
+  }
+
+  getUserData(data: any) {
+    let url = 'http://localhost:8080/api/users/profile';
     return this.http.post(url, data);
   }
 

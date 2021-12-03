@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BooksCallService } from '../api-services/books-call.service';
 import { DataService } from '../data.service';
+import { UserAccessService } from '../user-access.service';
 
 @Component({
   selector: 'app-library-books-list',
@@ -10,7 +11,10 @@ import { DataService } from '../data.service';
 })
 export class LibraryBooksListComponent implements OnInit {
 
-  constructor(private bookService: BooksCallService, private data: DataService, private router: Router) { }
+  public showRole: boolean = false;
+  constructor(private bookService: BooksCallService, private data: DataService, private router: Router, private userRole: UserAccessService) {
+    this.userAccessConfig();
+  }
 
   public rows: any = [];
 
@@ -39,9 +43,19 @@ export class LibraryBooksListComponent implements OnInit {
   }
 
   ngOnInit(): void { 
+    this.userAccessConfig();
     this.getBooksFromServices();
   }
 
+  userAccessConfig() {
+    var access = sessionStorage.getItem('role').toString();
+    if(access === 'admin') {
+      this.showRole = true;
+    } else if (access === 'student') {
+      this.showRole = false;
+    } 
+  }
+ 
   getBooksFromServices() {
     this.bookService.getBooks().subscribe(data => {
       this.rows = data;

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HostalCallService } from '../api-services/hostal-call.service';
 import { HostalDataService } from '../hostal-data.service';
+import { UserAccessService } from '../user-access.service';
 
 @Component({
   selector: 'app-hostals',
@@ -10,7 +11,10 @@ import { HostalDataService } from '../hostal-data.service';
 })
 export class HostalsComponent implements OnInit {
 
-  constructor(private hostalCall: HostalCallService, private hostalData: HostalDataService , private router: Router) { }
+  public showRole: boolean = false;
+  constructor(private hostalCall: HostalCallService, private hostalData: HostalDataService , private router: Router, private userRole: UserAccessService) { 
+    this.userAccessConfig();
+  }
 
   public rows: any = [];
 
@@ -27,8 +31,8 @@ export class HostalsComponent implements OnInit {
      sort: true, search: false, columnSearchValue: '', columnType: '', isEdit: false, width: 'cbt5per'
   },
   {
-    name: 'studentId', displayName: 'Student ID' ,
-     sort: true, search: false, columnSearchValue: '', columnType: '', isEdit: false, width: 'cbt5per'
+    name: 'studentId', displayName: 'Student ID' , placeholder: 'Search by student id', 
+     sort: true, search: true, columnSearchValue: '', columnType: '', isEdit: false, width: 'cbt5per'
   },
   {
     name: 'fromDate', displayName: 'from Date' ,
@@ -56,7 +60,17 @@ export class HostalsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.userAccessConfig();
     this.getHostalService();
+  }
+
+  userAccessConfig() {
+    var access = sessionStorage.getItem('role').toString();
+    if(access === 'admin') {
+      this.showRole = true;
+    } else if (access === 'student') {
+      this.showRole = false;
+    } 
   }
 
   getHostalService() {

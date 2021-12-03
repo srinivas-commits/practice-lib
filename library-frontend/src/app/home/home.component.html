@@ -1,12 +1,13 @@
-<!-- <button type="button" class="btn btn-primary" (click)="libraryClicked()"> Library </button> <br>
-<button type="button" class="btn btn-primary" (click)="hostalManagementClicked()"> Hostal Management </button> <br>
-<button type="button" class="btn btn-primary" (click)="videoLecturesClicked()"> Videos Tutorial </button> -->
-
-<!-- For demo purpose -->
-<div class="container">
-    <div class="pt-5 text-white">
-        <header class="py-5 mt-5">
-            <h1 class="display-4">School Management</h1>
-        </header>
+<div class="container" style="width: 50%;">
+    <div class="card" style="border: 1px solid rgba(0,0,0,.125)!important; text-align: center;">
+        <div class="card-body">
+            <div class="col-md-3" style="text-align: center;">
+                <img class="imgclass" src="../../assets/Images/userProfile.svg">
+            </div>
+            <h5 class="card-title">Username: {{userProfile.username}}</h5>
+            <p class="card-text">Email: {{userProfile.email}}</p>
+            <p class="card-text">Course: {{userProfile.usercourse}}</p>
+            <p class="card-text">Access: {{userProfile.useraccess}}</p>
+        </div>
     </div>
 </div>

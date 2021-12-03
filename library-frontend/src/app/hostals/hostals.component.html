@@ -1,6 +1,6 @@
 <div class="container">
     <h1 class="text-center"> Hostal Details</h1>
-    <button class="addButton btn btn-success" (click)="addHostalRoom()"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
+    <button class="addButton btn btn-success" (click)="addHostalRoom()" *ngIf='showRole'><i class="fa fa-plus-circle" aria-hidden="true"></i> Add Room</button>
 </div>
 <div class="container">
     <app-hkstable [columns]="columns" [rows]="rows" (editDataChange)="editedData($event)" (deleteDataChange)="deleteData($event)" [showActions]="true" [showPagination]="true" [showDelete]="true" [showView]="false">
