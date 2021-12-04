@@ -20,31 +20,31 @@ export class HostalsComponent implements OnInit {
 
   public columns = [{
     name: 'block', displayName: 'Block Name', sort: true, search: true, placeholder: 'Search by block name',
-    columnType: '', isEdit: false, width: 'cbt5per'
+    columnType: '', isEdit: false, width: ''
   },
   {
     name: 'hostalNo', displayName: 'Hostal No' , placeholder: 'Search by room no',
-     sort: true, search: true, columnSearchValue: '', columnType: '', isEdit: false, width: 'cbt5per'
+     sort: true, search: true, columnSearchValue: '', columnType: '', isEdit: false, width: ''
   },
   {
     name: 'status', displayName: 'Status' ,
-     sort: true, search: false, columnSearchValue: '', columnType: '', isEdit: false, width: 'cbt5per'
+     sort: true, search: false, columnSearchValue: '', columnType: '', isEdit: false, width: ''
   },
   {
     name: 'studentId', displayName: 'Student ID' , placeholder: 'Search by student id', 
-     sort: true, search: true, columnSearchValue: '', columnType: '', isEdit: false, width: 'cbt5per'
+     sort: true, search: true, columnSearchValue: '', columnType: '', isEdit: false, width: ''
   },
   {
     name: 'fromDate', displayName: 'from Date' ,
-     sort: true, search: false, columnSearchValue: '', columnType: '', isEdit: false, width: 'cbt5per'
+     sort: true, search: false, columnSearchValue: '', columnType: 'date', isEdit: false, width: ''
   },
   {
     name: 'toDate', displayName: 'to Date' ,
-     sort: true, search: false, columnSearchValue: '', columnType: '', isEdit: false, width: 'cbt5per'
+     sort: true, search: false, columnSearchValue: '', columnType: 'date', isEdit: false, width: ''
   },
   {
     name: 'roomCost', displayName: 'Cost' ,
-     sort: true, search: false, columnSearchValue: '', columnType: '', isEdit: false, width: 'cbt5per'
+     sort: true, search: false, columnSearchValue: '', columnType: '', isEdit: false, width: ''
   }
   ];
 

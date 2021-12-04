@@ -1,13 +1,17 @@
 <div class="container" style="width: 50%;">
-    <div class="card" style="border: 1px solid rgba(0,0,0,.125)!important; text-align: center;">
-        <div class="card-body">
-            <div class="col-md-3" style="text-align: center;">
-                <img class="imgclass" src="../../assets/Images/userProfile.svg">
+    <div class="card" style="border: 1px solid rgba(0,0,0,.125)!important;">
+        <div class="card-body" style="padding-left: 100px;">
+            <div class="row">
+                <div class="col-md-3">
+                    <img class="imgclass" src="../../assets/Images/userProfile.svg">
+                </div>
+                <div class="col-md-9" style="padding-top: 60px; padding-left: 90px;">
+                    <p class="" style="font-weight: 700;">Username: {{userProfile?.username}}</p>
+                    <p class="">Email: {{userProfile?.email}}</p>
+                    <p class="">Course: {{userProfile?.usercourse}}</p>
+                    <p class="">Access: {{userProfile?.useraccess}}</p>
+                </div>
             </div>
-            <h5 class="card-title">Username: {{userProfile.username}}</h5>
-            <p class="card-text">Email: {{userProfile.email}}</p>
-            <p class="card-text">Course: {{userProfile.usercourse}}</p>
-            <p class="card-text">Access: {{userProfile.useraccess}}</p>
         </div>
     </div>
 </div>

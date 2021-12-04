@@ -1,17 +1,31 @@
 <div class="container">
-    <h4> Book Management!! </h4>
-</div>
-<div class="container">
-    <form>
-        <div class="form-group">
-            <label for="bookTitle">Books Title</label>
-            <input type="text" class="form-control" id="bookTitle" name="bookTitle" [(ngModel)]="booksData.title" disabled>
+    <div class="row">
+        <div class="col-md-9">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label for="bookTitle" class="col-sm-2 control-label">Books Title</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="bookTitle" name="bookTitle" style="background-color: lightgrey;color: black;" [(ngModel)]="booksData.title" disabled>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="studentID" class="col-sm-2 control-label">Issued to</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="studentID" name="studentID" style="background-color: lightgrey;color: black;" placeholder="enter the student ID" [(ngModel)]="booksData.issuedtoStudent" [disabled]="booksData.status === 'issued'">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" id="issue" class="btn btn-primary" (click)="issue()" name="issue" *ngIf="booksData.status === 'available'">Issue</button>
+                    </div>
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" id="return" class="btn btn-primary" (click)="returnBook()" name="return" *ngIf="booksData.status === 'issued'">Return</button>
+                    </div>
+                </div>
+            </form>
         </div>
-        <div class="form-group">
-            <label for="studentID">Issued to</label>
-            <input type="text" class="form-control" id="studentID" name="studentID" placeholder="enter the student ID" [(ngModel)]="booksData.issuedtoStudent" [disabled]="booksData.status === 'issued'">
+        <div class="col-md-3">
+            <img class="imgclass" src="../../assets/Images/addBook.png">
         </div>
-        <button type="submit" id="issue" class="btn btn-primary" (click)="issue()" name="issue" *ngIf="booksData.status === 'available'">Issue</button>
-        <button type="submit" id="return" class="btn btn-primary" (click)="returnBook()" name="return" *ngIf="booksData.status === 'issued'">Return</button>
-    </form>
+    </div>
 </div>

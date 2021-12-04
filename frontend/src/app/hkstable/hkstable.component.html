@@ -51,7 +51,7 @@
                 <span *ngIf="!column.isEdit && (column.columnType=='' || column.columnType=='text')">{{row[column.name]}}</span>
                 <input type="text" *ngIf="column.isEdit && (column.columnType=='' || column.columnType=='text')" class="form-control frm-txt-ctl" name="value" (ngModelChange)="editedRowData(row[column.name])" [(ngModel)]="row[column.name]" />
                 <input type="checkbox" *ngIf="column.columnType=='checkbox'" (click)="checkbox(row)" class="form-check-input" name="value" [(ngModel)]="row[column.name]" />
-
+                <span *ngIf="!column.isEdit && (column.columnType=='date')">{{row[column.name] | date}}</span>
 
                 <select *ngIf="column.columnType=='dropdown'" class="form-control" id="default" name="dataType" [(ngModel)]="row[column.name]">
           <option value="" disabled>Select Default Value</option>

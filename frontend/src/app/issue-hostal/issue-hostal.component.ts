@@ -23,9 +23,12 @@ export class IssueHostalComponent implements OnInit {
     var base = this;
     this.hostalData.status = 'alloted';
     this.hostalCallService.accomodateHostal(this.hostalData).subscribe(data => {
-      console.log(data.toString());
+      console.log(data);
       alert("Updated Successfully");
       base.router.navigateByUrl('/hostalManage');
+    }, error => {
+      alert('user doesnt have access');
+      base.router.navigateByUrl('/librarybooks');
     });
   }
 

@@ -86,7 +86,7 @@ exports.findOne = (req, res) => {
 // Update a Tutorial by the id in the request
 exports.update = (req, res) => {
     var access = verifyJwtToken(req, 'admin');
-
+    //console.log(access);
     if (access) {
         if (!req.body) {
             return res.status(400).send({
@@ -98,6 +98,8 @@ exports.update = (req, res) => {
 
         Hostal.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
             .then(data => {
+                console.log(req.params.id);
+                console.log(data);
                 if (!data) {
                     res.status(404).send({
                         message: `Cannot update Tutorial with id=${id}. Maybe Tutorial was not found!`
